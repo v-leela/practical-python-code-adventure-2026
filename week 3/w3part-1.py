@@ -218,6 +218,8 @@ stack = """ 127-
  -16-
  ---"""
 
+#converting the stack into useful data like incomplete(incom) list
+
 thelist = stack.split(sep="\n")
 str_unsort = []
 for line in thelist:
@@ -226,6 +228,10 @@ for line in thelist:
         str_unsort.append(num)
 
 incom = list(map(int, str_unsort))
+
+
+#algorithm for finding the no.of flips
+
 flip = 0
 
 while len(incom) > 1:
