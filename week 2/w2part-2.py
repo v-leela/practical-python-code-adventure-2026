@@ -1,6 +1,7 @@
 newpattern = list("12111112121112111212212112111212")
 newpattern = list(map(int, newpattern))
 
+#finding the pattern after 65th iteration
 for i in range(65):
     pattern = newpattern
     pre = 0
@@ -32,6 +33,7 @@ t3 = 0
 numcount = 1
 pre = 0
 
+#count for three
 for a in newpattern:
     
     if pre == a:
