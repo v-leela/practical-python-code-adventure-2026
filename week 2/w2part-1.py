@@ -1,5 +1,6 @@
 newpattern = [1, 1, 2, 1, 2]
 
+#finding the newpattern after the 65th iteration
 for i in range(65):
     pattern = newpattern
     pre = None
