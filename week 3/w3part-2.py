@@ -218,7 +218,7 @@ stack = """ 127-
  -16-
  ---"""
 
-#converting the stack into useful incomplete(incom) and logical(logi) lists
+#converting the stack into useful data like incomplete(incom) and logical(logi) lists
 
 thelist = stack.split(sep="\n")
 str_unsort = []
