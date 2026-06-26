@@ -218,6 +218,8 @@ stack = """ 127-
  -16-
  ---"""
 
+#converting the stack into useful incomplete(incom) and logical(logi) lists
+
 thelist = stack.split(sep="\n")
 str_unsort = []
 indices = []
@@ -244,6 +246,8 @@ for i in range(len(numbers)):
     else:
         logi.append(1)
 
+
+#algorithm for finding no.of flips
 
 flip = 0
 
