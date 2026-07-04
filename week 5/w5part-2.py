@@ -14,8 +14,8 @@ for i, line in enumerate(grid):
         break
 
 
-path = [[20, 20]]
-visited = [[20, 20]]
+path = [[i, start]]
+visited = [[i, start]]
 
 
 def get_neighbours(i, j):
