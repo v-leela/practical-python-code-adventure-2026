@@ -48,7 +48,7 @@ vertices.pop(0)  # the "starting_point" won't be a good starting point.
 
 
 ###second loop
-rall_points = [p for p in sorted(all_points, reverse=True) if p[1] > 7281]
+rall_points = [p for p in sorted(all_points, reverse=True) if p[1] > vertices[-1][1]]
 starting_point = rall_points[0]
 rall_points.pop(0)
 coordinates = sorted([p for p in rall_points if p != starting_point])
