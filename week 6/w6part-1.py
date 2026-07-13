@@ -44,7 +44,7 @@ for p in all_points:
     # print(count)
 
 all_points.append(vertices[0])
-vertices.pop(0)  # the starting point won't be a good starting point.
+vertices.pop(0)  # the "starting_point" won't be a good starting point.
 
 
 ###second loop
