@@ -22,9 +22,8 @@ def check_covexity(p1, p2, other_points):
         sign = (value > 0) - (value < 0)
         slist.add(sign)
         if 1 in slist and -1 in slist:
-            return True  # p2 is collinear with the line formed by p1 and p3.
-
-    return False  # p2 is not collinear with the line formed by p1 and p3.
+            return False  # p2 is collinear with the line formed by p1 and p3.
+    return True  
 
 
 ###first loop
@@ -34,17 +33,17 @@ all_points.pop(0)
 coordinates = sorted([p for p in all_points if p != starting_point])
 vertices = [starting_point]
 
-count = 0
 for p in all_points:
     last_vertex = vertices[-1]
-    if not check_covexity(last_vertex, p, coordinates):
+    if check_covexity(last_vertex, p, coordinates):
         vertices.append(p)
         coordinates.remove(p)
-    count += 1
-    # print(count)
 
 all_points.append(vertices[0])
 vertices.pop(0)  # the "starting_point" won't be a good starting point.
+
+# print(len(vertices))
+# print(vertices)
 
 
 ###second loop
@@ -55,12 +54,9 @@ coordinates = sorted([p for p in rall_points if p != starting_point])
 
 for p in rall_points:
     last_vertex = vertices[-1]
-    if not check_covexity(last_vertex, p, coordinates):
+    if check_covexity(last_vertex, p, coordinates):
         vertices.append(p)
         coordinates.remove(p)
-
-    count += 1
-    # print(count)
 
 # print(len(vertices))
 # print(vertices)
@@ -72,11 +68,12 @@ def coll_check(p1, p2, p3):
     x2, y2 = p2
     x3, y3 = p3
     value = (y3 - y1) * (x2 - x1) - (y2 - y1) * (x3 - x1)
-    return value
+    if not value:
+        return True # p2 is not collinear with the line formed by p1 and p3.
+    return False # p2 is collinear with the line formed by p1 and p3.
 
 
 ###third loop for coll_check
-
 current = None
 last = vertices[-1]
 
@@ -90,14 +87,13 @@ while current != last:
         p2 = vertices[(idx + 1) % len(vertices)]
         p3 = vertices[(idx + 2) % len(vertices)]
 
-        if coll_check(p1, p2, p3) == 0:
+        if coll_check(p1, p2, p3):
             copy_ofvertices.remove(p2)
             vertices = copy_ofvertices
-            count += 1
             break
 
 
-# print(vertices)
+# print(vertices) # final vertices
 
 
 ###ploting
