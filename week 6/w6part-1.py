@@ -22,7 +22,7 @@ def check_covexity(p1, p2, other_points):
         sign = (value > 0) - (value < 0)
         slist.add(sign)
         if 1 in slist and -1 in slist:
-            return False  # p2 is collinear with the line formed by p1 and p3.
+            return False  
     return True  
 
 
@@ -30,7 +30,7 @@ def check_covexity(p1, p2, other_points):
 all_points = sorted(all_points)
 starting_point = all_points[0]
 all_points.pop(0)
-coordinates = sorted([p for p in all_points if p != starting_point])
+coordinates = [p for p in all_points if p[1] < starting_point[1]]
 vertices = [starting_point]
 
 for p in all_points:
@@ -40,7 +40,6 @@ for p in all_points:
         coordinates.remove(p)
 
 all_points.append(vertices[0])
-vertices.pop(0)  # the "starting_point" won't be a good starting point.
 
 # print(len(vertices))
 # print(vertices)
@@ -50,13 +49,12 @@ vertices.pop(0)  # the "starting_point" won't be a good starting point.
 rall_points = [p for p in sorted(all_points, reverse=True) if p[1] > vertices[-1][1]]
 starting_point = rall_points[0]
 rall_points.pop(0)
-coordinates = sorted([p for p in rall_points if p != starting_point])
 
 for p in rall_points:
     last_vertex = vertices[-1]
-    if check_covexity(last_vertex, p, coordinates):
+    if check_covexity(last_vertex, p, rall_points):
         vertices.append(p)
-        coordinates.remove(p)
+        rall_points.remove(p)
 
 # print(len(vertices))
 # print(vertices)
